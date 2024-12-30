@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Letter</title>
+  <style>
+    /* CSS Section */
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #ffe6e9;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    h2 {
+      color: #d7385e;
+      font-size: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .heart {
+      font-size: 3rem;
+      color: red;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .container {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+    }
+
+    .container.active {
+      display: block;
+    }
+
+    button {
+      background-color: #d7385e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+    }
+
+    button:hover {
+      background-color: #b32d4a;
+    }
+
+    video {
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Slide 1 -->
+  <div id="slide1" class="container active">
+    <h2>Hey, listen, I have something for you</h2>
+    <div class="heart">❤️</div>
+    <p>I want to say so many things, but I can’t express them all, so I made this just for you.</p>
+    <button onclick="nextSlide(2)">Click here, My Love 🎀</button>
+  </div>
+
+  <!-- Slide 2 -->
+  <div id="slide2" class="container">
+    <h2>Opening the letter...</h2>
+    <p>Love ♥</p>
+    <button onclick="nextSlide(3)">Click here to open the letter 🎀</button>
+  </div>
+
+  <!-- Slide 3 -->
+  <div id="slide3" class="container">
+    <h2>Hey, listen!</h2>
+    <p>
+      What I'm about to say might feel a bit unnerving or out of the blue...<br>
+      I’ve been thinking a lot lately, and I’ve realized my feelings for you go deeper than just liking.<br>
+      You mean so much to me, and I think I’m falling for you, Yashashri ❤️
+    </p>
+    <button onclick="nextSlide(4)">Next</button>
+  </div>
+
+  <!-- Slide 4 -->
+  <div id="slide4" class="container">
+    <p>
+      You’re on my mind all day. You’re the only girl for whom I’ve had such feelings.<br>
+      You’re not my first relationship, kiss, or “I love you.”<br>
+      But you’re the first person who made me feel like I’m truly enough.<br>
+      The first to show me what love actually means. ❤️
+    </p>
+    <button onclick="nextSlide(5)">Next</button>
+  </div>
+
+  <!-- Slide 5 -->
+  <div id="slide5" class="container">
+    <p>
+      Just like in *Wake Up Sid*, Aisha helped Sid discover his true purpose.<br>
+      You've helped me realize what's truly important.<br>
+      Happiness comes when we share our journeys with someone who understands, just like Sid and Aisha did.<br>
+      I want to share my journey with you. 💕<br>
+      If I could give you one thing in this life, it would be the ability to see yourself through my eyes.<br>
+      Only then would you realize how special you are to me. 💕
+    </p>
+    <button onclick="nextSlide(6)">Next</button>
+  </div>
+
+  <!-- Slide 6 -->
+  <div id="slide6" class="container">
+    <p>
+      I don’t want to be the best; I just want to be the right one for you.<br>
+      Let’s struggle together and prove that love and career can both be achieved with the right person. ❤️
+    </p>
+    <button onclick="nextSlide(7)">Next</button>
+  </div>
+
+  <!-- Slide 7 -->
+  <div id="slide7" class="container">
+    <h2>Play this video for you!</h2>
+    <video controls autoplay width="600">
+      <source src="mylove" type="mylove">
+      Your browser does not support the video tag.
+    </video>
+    <button onclick="nextSlide(8)">Next</button>
+  </div>
+
+  <!-- Slide 8 -->
+  <div id="slide8" class="container">
+    <p>
+      I hope you understand my genuine feelings. You genuinely mean a lot to me. 💖<br>
+      Love, Tanmay
+    </p>
+    <button onclick="nextSlide(9)">Next</button>
+  </div>
+
+  <!-- Slide 9 -->
+  <div id="slide9" class="container">
+    <h2>Can we start 2025 together? ❤️</h2>
+    <button onclick="alert('I hope you say yes!')">Answer Me</button>
+  </div>
+
+  <script>
+    // JavaScript Section
+    function nextSlide(slideNumber) {
+      const currentSlide = document.querySelector('.container.active');
+      const nextSlide = document.getElementById('slide' + slideNumber);
+
+      if (currentSlide) currentSlide.classList.remove('active');
+      if (nextSlide) nextSlide.classList.add('active');
+    }
+  </script>
+</body>
+</html>
